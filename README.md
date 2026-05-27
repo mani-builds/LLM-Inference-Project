@@ -1,2 +1,2 @@
 * LLM Inference Project
-AI inference locally.
+  AI inference locally.
