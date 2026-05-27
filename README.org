@@ -2,6 +2,9 @@
   AI inference locally.
   
   I currently have the following consumer grade GPU:
+  #+BEGIN_SRC
+  nvidia-smi
+  #+END_SRC
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 580.159.03             Driver Version: 592.27         CUDA Version: 13.1     |
 +-----------------------------------------+------------------------+----------------------+
@@ -23,4 +26,4 @@
 +-----------------------------------------------------------------------------------------+
 
 
-So total GPU Memory is 8188MiB = 8188 / 1024 GB = 8 GB. In-order to pick a model to run on this GPU with this much memory, I have to make sure that the model weights and KV-cache allocated in memory shouldn't exceed 8GB.
+So total GPU Memory is 8188MiB = 8188 / 1024 GB = 8 GB. In-order to pick a model to run on this GPU with this much memory, I have to make sure that the model size (number of parameters) and KV-cache allocated in memory shouldn't exceed 8GB.
