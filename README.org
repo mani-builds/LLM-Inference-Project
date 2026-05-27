@@ -2,7 +2,7 @@
   AI inference locally.
   
   I currently have the following consumer grade GPU:
-  #+BEGIN_SRC unix
+  #+BEGIN_SRC shell
   nvidia-smi
   #+END_SRC
 #+BEGIN_SRC text
