@@ -1,9 +1,10 @@
 * LLM Inference Project
   AI inference locally.
-  
+
+** Choosing the right model:
   I currently have the following consumer grade GPU:
-  #+BEGIN_SRC shell
-  nvidia-smi
+#+BEGIN_SRC shell
+nvidia-smi
   #+END_SRC
 #+BEGIN_SRC text
 +-----------------------------------------------------------------------------------------+
@@ -28,3 +29,13 @@
 #+END_SRC
 
 So total GPU Memory is 8188MiB = 8188 / 1024 GB = 8 GB. In-order to pick a model to run on this GPU with this much memory, I have to make sure that the model size (number of parameters) and KV-cache allocated in memory shouldn't exceed 8GB.
+
+*** Calculating GPU memory required for LLM serving
+You can calculate memory required as:
+#+BEGIN_SRC text
+Memory (GB) = P * (Q / 8) * ( 1 + Overhead )
+P - No. of parameters (in billions)
+Q - Bit precision (eg: 16, 32), divided by 8 to convert to Bytes
+Overhead (%) - Additional memory or tempory usage during inference (eg: KV cache, activation buffers, optimizer states)
+#+END_SRC
+For instance the selected model is *Qwen1.5-1.8B*. It has 1.8 Billion parameters and it's precision is BF16. So memory needed src_<text>{1.8 * (16/8) * (1 + 0.3) = 4.68 GB}
